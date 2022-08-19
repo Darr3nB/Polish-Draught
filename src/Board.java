@@ -1,6 +1,7 @@
 import java.util.List;
 
 public class Board {
+    // TODO make gameBoard Pawn type
     public int[][] gameBoard;
 
     public Board(int size){
@@ -36,7 +37,7 @@ public class Board {
                 }else if (gameBoard[i][j] == 3){
                     boardToPrint.append("|WQ|");
                 }else if (gameBoard[i][j] == 4){
-                    boardToPrint.append("BQ");
+                    boardToPrint.append("|BQ|");
                 }
             }
             System.out.println(boardToPrint);
