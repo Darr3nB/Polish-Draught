@@ -52,7 +52,7 @@ public class Board {
     }
 
     public void removePawn(int rowCoordToZero, int colCoordToZero, List<Pawn> listToClean){
-        Pawn pawnToRemove;
+        Pawn pawnToRemove = null;
 
         for (Pawn pawn:listToClean) {
             if(pawn.rowCoord == rowCoordToZero && pawn.colCoord == colCoordToZero){
