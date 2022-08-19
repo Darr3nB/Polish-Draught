@@ -1,5 +1,14 @@
 public class Main {
     public static void main(String[] args){
-        System.out.println("Hello World!");
+        // TODO close scanner at the end
+
+        int gameType = Menu.welcomeMenu();
+
+        int boardSize = Menu.boardSize();
+
+        Board newBoard = new Board(boardSize);
+
+        newBoard.toString();
+
     }
 }
