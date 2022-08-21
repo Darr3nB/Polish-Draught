@@ -11,19 +11,18 @@ public class Board {
     @Override
     public String toString(){
         char headerLetter = 'A';
-        StringBuilder header = new StringBuilder();
-        header.append("\t");
+        StringBuilder boardToPrint = new StringBuilder();
+        boardToPrint.append("\t");
 
         for (int i = 0; i < gameBoard.length; i++){
-            header.append(' ')
+            boardToPrint.append(' ')
                 .append(headerLetter)
                 .append(' ');
             headerLetter++;
         }
-        System.out.println(header);
+        boardToPrint.append(System.lineSeparator());
 
         for (int i = 0; i < gameBoard.length; i++){
-            StringBuilder boardToPrint = new StringBuilder();
             boardToPrint.append(i + 1)
                 .append("\t");
 
@@ -40,9 +39,9 @@ public class Board {
                     boardToPrint.append("|BQ|");
                 }
             }
-            System.out.println(boardToPrint);
+            boardToPrint.append(System.lineSeparator());
         }
-        return "Board is printed!";
+        return boardToPrint.toString();
     }
 
     public void movePawn(int newRow, int newCol, Pawn pawn){

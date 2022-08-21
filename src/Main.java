@@ -8,7 +8,7 @@ public class Main {
 
         Board newBoard = new Board(boardSize);
 
-        newBoard.toString();
+        System.out.println(newBoard.toString());
 
     }
 }
