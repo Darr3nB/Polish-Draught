@@ -2,10 +2,10 @@ import java.util.List;
 
 public class Board {
     // TODO make gameBoard Pawn type
-    public int[][] gameBoard;
+    public Pawn[][] gameBoard;
 
     public Board(int size){
-        gameBoard = new int[size][size];
+        gameBoard = new Pawn[size][size];
     }
 
     @Override
@@ -28,21 +28,20 @@ public class Board {
                 .append("\t");
 
             for (int j = 0; j < gameBoard.length; j++){
-                if(gameBoard[i][j] == 0) {
+                if (gameBoard[i][j] == null){
                     boardToPrint.append("|0|");
-                }else if(gameBoard[i][j] == 1){
+                }else if (gameBoard[i][j].player == 1 && !gameBoard[i][j].isCrowned){
                     boardToPrint.append("|W|");
-                }else if (gameBoard[i][j] == 2){
+                }else if (gameBoard[i][j].player == 2 && !gameBoard[i][j].isCrowned){
                     boardToPrint.append("|B|");
-                }else if (gameBoard[i][j] == 3){
+                }else if (gameBoard[i][j].player == 1 && gameBoard[i][j].isCrowned){
                     boardToPrint.append("|WQ|");
-                }else if (gameBoard[i][j] == 4){
+                }else if (gameBoard[i][j].player == 2 && gameBoard[i][j].isCrowned){
                     boardToPrint.append("|BQ|");
                 }
             }
             System.out.println(boardToPrint);
         }
-
         return "Board is printed!";
     }
 
