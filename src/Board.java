@@ -1,7 +1,6 @@
 import java.util.List;
 
 public class Board {
-    // TODO make gameBoard Pawn type
     public Pawn[][] gameBoard;
 
     public Board(int size){
