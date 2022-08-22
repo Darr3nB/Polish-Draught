@@ -30,13 +30,13 @@ public class Board {
 
             for (Pawn pawn : line){
                 if (pawn == null){
-                    boardToPrint.append("|0|");
+                    boardToPrint.append("| |");
                 }else if(!pawn.isCrowned()){
                     boardToPrint.append("|%s|".formatted(pawn.getColor()));
                 }else if(pawn.isCrowned() && pawn.player == 1){
-                    boardToPrint.append("|WQ|");
+                    boardToPrint.append("|Q|");
                 }else if(pawn.isCrowned() && pawn.player == 2){
-                    boardToPrint.append("|BQ|");
+                    boardToPrint.append("|K|");
                 }
             }
             boardToPrint.append(System.lineSeparator());
