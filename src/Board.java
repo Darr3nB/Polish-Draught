@@ -27,6 +27,7 @@ public class Board {
             boardToPrint.append(rowMarker)
                 .append("\t");
             rowMarker++;
+            
             for (Pawn pawn : line){
                 if (pawn == null){
                     boardToPrint.append("|0|");
