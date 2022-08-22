@@ -27,7 +27,7 @@ public class Board {
             boardToPrint.append(rowMarker)
                 .append("\t");
             rowMarker++;
-            
+
             for (Pawn pawn : line){
                 if (pawn == null){
                     boardToPrint.append("|0|");
@@ -85,6 +85,28 @@ public class Board {
 
         if (pawnToRemove != null){
             listToClean.remove(pawnToRemove);
+        }
+    }
+
+    public void placeOrReplacePawnsOnBoard(List<Pawn> pawnList){
+        nullAllPawns();
+
+        for (int i = 0; i < gameBoard.length; i++){
+            for (int j = 0; j < gameBoard.length; j++){
+                for (Pawn pawn : pawnList){
+                    if (i == pawn.rowCoord && j == pawn.colCoord){
+                        gameBoard[i][j] = pawn;
+                    }
+                }
+            }
+        }
+    }
+
+    public void nullAllPawns(){
+        for (Pawn[] line : gameBoard){
+            for (Pawn pawn : line){
+                pawn = null;
+            }
         }
     }
 }

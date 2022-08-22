@@ -6,12 +6,12 @@ public class Pawn {
     public int colCoord;
     public String role;
 
-    public Pawn(String color, int rowCoord, int colCoord, int player, String role){
+    public Pawn(String color, int rowCoord, int colCoord, int player, boolean isCrowned){
         this.color = color;
         this.player = player;
         this.rowCoord = rowCoord;
         this.colCoord = colCoord;
-        this.role = role;
+        this.isCrowned = isCrowned;
     }
 
 
