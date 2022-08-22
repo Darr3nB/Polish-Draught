@@ -32,38 +32,16 @@ public class Board {
             for (Pawn pawn : line){
                 if (pawn == null){
                     boardToPrint.append("|0|");
-                }else if (pawn.player == 1 && !pawn.isCrowned()){
-                    boardToPrint.append("|W|");
-                }else if (pawn.player == 2 && !pawn.isCrowned()){
-                    boardToPrint.append("|B|");
-                }else if (pawn.player == 1 && pawn.isCrowned()){
+                }else if(!pawn.isCrowned()){
+                    boardToPrint.append("|%s|".formatted(pawn.getColor()));
+                }else if(pawn.isCrowned() && pawn.player == 1){
                     boardToPrint.append("|WQ|");
-                }else if (pawn.player == 2 && pawn.isCrowned()){
+                }else if(pawn.isCrowned() && pawn.player == 2){
                     boardToPrint.append("|BQ|");
                 }
             }
             boardToPrint.append(System.lineSeparator());
         }
-
-//        for (int i = 0; i < gameBoard.length; i++){
-//            boardToPrint.append(i + 1)
-//                .append("\t");
-//
-//            for (int j = 0; j < gameBoard.length; j++){
-//                if (gameBoard[i][j] == null){
-//                    boardToPrint.append("|0|");
-//                }else if (gameBoard[i][j].player == 1 && !gameBoard[i][j].isCrowned){
-//                    boardToPrint.append("|W|");
-//                }else if (gameBoard[i][j].player == 2 && !gameBoard[i][j].isCrowned){
-//                    boardToPrint.append("|B|");
-//                }else if (gameBoard[i][j].player == 1 && gameBoard[i][j].isCrowned){
-//                    boardToPrint.append("|WQ|");
-//                }else if (gameBoard[i][j].player == 2 && gameBoard[i][j].isCrowned){
-//                    boardToPrint.append("|BQ|");
-//                }
-//            }
-//            boardToPrint.append(System.lineSeparator());
-//        }
         return boardToPrint.toString();
     }
 
