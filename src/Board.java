@@ -10,6 +10,7 @@ public class Board {
 
     @Override
     public String toString(){
+
         char headerLetter = 'A';
         int rowMarker = 0;
         StringBuilder boardToPrint = new StringBuilder();
@@ -68,8 +69,8 @@ public class Board {
 
     public void movePawn(int rowToNull, int colToNull, int rowToMoveTo, int colToMoveTo, Pawn pawn){
         // TODO check after move can it be crowned
-        pawn.rowCoord = rowToMoveTo;
-        pawn.colCoord = colToMoveTo;
+        pawn.x = rowToMoveTo;
+        pawn.y = colToMoveTo;
         gameBoard[rowToNull][colToNull] = null;
 
     }
@@ -78,7 +79,7 @@ public class Board {
         Pawn pawnToRemove = null;
 
         for (Pawn pawn:listToClean) {
-            if(pawn.rowCoord == rowCoordToZero && pawn.colCoord == colCoordToZero){
+            if(pawn.x == rowCoordToZero && pawn.y == colCoordToZero){
                 pawnToRemove = pawn;
             }
         }
@@ -94,7 +95,7 @@ public class Board {
         for (int i = 0; i < gameBoard.length; i++){
             for (int j = 0; j < gameBoard.length; j++){
                 for (Pawn pawn : pawnList){
-                    if (i == pawn.rowCoord && j == pawn.colCoord){
+                    if (i == pawn.x && j == pawn.y){
                         gameBoard[i][j] = pawn;
                     }
                 }
@@ -102,7 +103,7 @@ public class Board {
         }
     }
 
-    public void nullAllPawns(){
+    private void nullAllPawns(){
         for (Pawn[] line : gameBoard){
             for (Pawn pawn : line){
                 pawn = null;
