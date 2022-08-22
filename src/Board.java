@@ -32,13 +32,13 @@ public class Board {
             for (Pawn pawn : line){
                 if (pawn == null){
                     boardToPrint.append("|0|");
-                }else if (pawn.player == 1 && !pawn.isCrowned){
+                }else if (pawn.player == 1 && !pawn.isCrowned()){
                     boardToPrint.append("|W|");
-                }else if (pawn.player == 2 && !pawn.isCrowned){
+                }else if (pawn.player == 2 && !pawn.isCrowned()){
                     boardToPrint.append("|B|");
-                }else if (pawn.player == 1 && pawn.isCrowned){
+                }else if (pawn.player == 1 && pawn.isCrowned()){
                     boardToPrint.append("|WQ|");
-                }else if (pawn.player == 2 && pawn.isCrowned){
+                }else if (pawn.player == 2 && pawn.isCrowned()){
                     boardToPrint.append("|BQ|");
                 }
             }
@@ -67,12 +67,15 @@ public class Board {
         return boardToPrint.toString();
     }
 
-    public void movePawn(int rowToNull, int colToNull, int rowToMoveTo, int colToMoveTo, Pawn pawn){
+    public void movePawn(int starRow, int startCol, int rowToMoveTo, int colToMoveTo, List<Pawn> pawnList){
         // TODO check after move can it be crowned
-        pawn.x = rowToMoveTo;
-        pawn.y = colToMoveTo;
-        gameBoard[rowToNull][colToNull] = null;
-
+        for (Pawn pawn : pawnList) {
+            if (pawn.x == starRow && pawn.y == startCol){
+                pawn.x = rowToMoveTo;
+                pawn.y = colToMoveTo;
+                return;
+            }
+        }
     }
 
     public void removePawn(int rowCoordToZero, int colCoordToZero, List<Pawn> listToClean){

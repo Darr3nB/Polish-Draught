@@ -1,17 +1,16 @@
 public class Pawn {
     private String color;
     public int player;
-    public boolean isCrowned;
+    public boolean isCrowned = false;
     public int x;
     public int y;
     public String role;
 
-    public Pawn(String color, int rowCoord, int colCoord, int player, boolean isCrowned){
+    public Pawn(String color, int rowCoord, int colCoord, int player){
         this.color = color;
         this.player = player;
         this.x = rowCoord;
         this.y = colCoord;
-        this.isCrowned = isCrowned;
     }
 
     public void crownMe(){
