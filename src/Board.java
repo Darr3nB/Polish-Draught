@@ -33,9 +33,9 @@ public class Board {
                     boardToPrint.append("| |");
                 }else if(!pawn.isCrowned()){
                     boardToPrint.append("|%s|".formatted(pawn.getColor()));
-                }else if(pawn.isCrowned() && pawn.player == 1){
+                }else if(pawn.isCrowned() && pawn.getColor() == 'W'){
                     boardToPrint.append("|Q|");
-                }else if(pawn.isCrowned() && pawn.player == 2){
+                }else if(pawn.isCrowned() && pawn.getColor() == 'B'){
                     boardToPrint.append("|K|");
                 }
             }
@@ -44,12 +44,12 @@ public class Board {
         return boardToPrint.toString();
     }
 
-    public void movePawn(int starRow, int startCol, int rowToMoveTo, int colToMoveTo, List<Pawn> pawnList){
+    public void movePawn(int starRow, int startCol, int endRow, int endCol, List<Pawn> pawnList){
         // TODO check after move can it be crowned
         for (Pawn pawn : pawnList) {
             if (pawn.x == starRow && pawn.y == startCol){
-                pawn.x = rowToMoveTo;
-                pawn.y = colToMoveTo;
+                pawn.x = endRow;
+                pawn.y = endCol;
                 return;
             }
         }

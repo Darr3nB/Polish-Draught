@@ -7,7 +7,6 @@ public class Main {
         List<Pawn> pawnList = new ArrayList<Pawn>();
 
         int gameType = Menu.welcomeMenu();
-
         int boardSize = Menu.boardSize();
 
         Board newBoard = new Board(boardSize);

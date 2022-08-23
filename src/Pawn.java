@@ -1,7 +1,7 @@
 public class Pawn {
     private char color;
     public int player;
-    public boolean isCrowned = false;
+    private boolean isCrowned = false;
     public int x;
     public int y;
     public String role;
