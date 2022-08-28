@@ -58,7 +58,7 @@ public class Play {
 
     private static boolean checkPlayerCoordinateInput(char xCoord, int yCoord, int boardSize){
         if(xCoord > 'A' && xCoord < 'Z') return false;
-        if (yCoord < 10 || yCoord > boardSize) return false;
+        if (yCoord < 1 || yCoord > boardSize) return false;
 
         return true;
     }
