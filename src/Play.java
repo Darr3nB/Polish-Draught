@@ -9,7 +9,7 @@ public class Play {
         int gameType = Menu.welcomeMenu();
         switch (gameType){
             case 1:
-                // TODO PvP
+                playerVsPlayer();
                 break;
             case 2:
                 // TODO PvA
@@ -24,11 +24,11 @@ public class Play {
                 System.out.println("Good bye!");
                 break;
         }
-        //int boardSize = Menu.boardSize();
+    }
 
-        // Board newBoard = new Board(boardSize);
-
-
-        // System.out.println(newBoard.toString());
+    private static void playerVsPlayer(){
+        int boardSize = Menu.boardSize();
+        Board playerVsPlayerBoard = new Board(boardSize);
+        System.out.println(playerVsPlayerBoard.toString());
     }
 }

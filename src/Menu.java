@@ -4,9 +4,8 @@ import java.util.Scanner;
 public class Menu {
 
     public static int welcomeMenu(){
-        // TODO check if input is int and a valid menu point
         StringBuilder welcome = new StringBuilder();
-        int menuSelected = 0;
+        int menuSelected;
         System.out.println("Welcome to Polish Draught!\n");
         Scanner sc = new Scanner(System.in);
 
@@ -43,11 +42,28 @@ public class Menu {
     public static int boardSize(){
         // TODO check if input is int and between range
         Scanner sc = new Scanner(System.in);
+        int boardSize;
 
-        System.out.print("Enter a field size (10-20): ");
-        int boardSize = sc.nextInt();
+        while (true){
+            try {
+                System.out.print("Enter a field size (10-20): ");
+
+                int input = sc.nextInt();
+
+                if (input < 10 || input > 20){
+                    System.out.println("Invalid board size!");
+                    continue;
+                }
+                boardSize = input;
+
+                return boardSize;
+            }catch (InputMismatchException e){
+                System.out.println("Invalid input!");
+                sc.next();
+                System.out.println(System.lineSeparator());
+            }
+        }
+
         //sc.close();
-
-        return boardSize;
     }
 }

@@ -11,7 +11,7 @@ public class Board {
     public String toString(){
 
         char headerLetter = 'A';
-        int rowMarker = 0;
+        int rowMarker = 1;
         StringBuilder boardToPrint = new StringBuilder();
         boardToPrint.append("\t");
 
