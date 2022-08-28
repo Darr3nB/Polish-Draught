@@ -10,7 +10,7 @@ public class Play {
         int gameType = Menu.welcomeMenu();
         switch (gameType){
             case 1:
-                playerVsPlayer();
+                playerVsPlayer(pawnList);
                 break;
             case 2:
                 // TODO PvA
@@ -27,7 +27,7 @@ public class Play {
         }
     }
 
-    private static void playerVsPlayer(){
+    private static void playerVsPlayer(List<Pawn> pawnList){
         int boardSize = Menu.boardSize();
         Board playerVsPlayerBoard = new Board(boardSize);
         int playerTurn = 1;
@@ -59,6 +59,10 @@ public class Play {
                     System.out.println("Invalid input!");
                     continue;
                 }
+
+                playerVsPlayerBoard.movePawn(startXCordInput, startYCordInput, endXCordInput, endYCoordinateInput, pawnList);
+
+                playerTurn = playerTurn == 1 ? 2 : 1;
 
 
                 break;

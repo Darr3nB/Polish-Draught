@@ -50,6 +50,7 @@ public class Board {
             if (pawn.x == starRow && pawn.y == startCol){
                 pawn.x = endRow;
                 pawn.y = endCol;
+                placeOrReplacePawnsOnBoard(pawnList);
                 return;
             }
         }
