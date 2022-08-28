@@ -62,20 +62,28 @@ public class Play {
 
                 playerVsPlayerBoard.movePawn(startXCordInput, startYCordInput, endXCordInput, endYCoordinateInput, pawnList);
 
+                if (checkForWin(pawnList)) break;
+
                 playerTurn = playerTurn == 1 ? 2 : 1;
-
-
-                break;
             }catch (Exception e){
                 System.out.println("Error");
             }
         }
+
+        if(!Menu.epilogue(playerTurn)){
+            System.out.println("Good bye!");
+        }
+        playGame();
     }
 
     private static boolean checkPlayerCoordinateInput(char xCoord, int yCoord, int boardSize){
         if(xCoord > 'A' && xCoord < 'Z') return false;
         if (yCoord < 1 || yCoord > boardSize) return false;
 
+        return true;
+    }
+
+    private static boolean checkForWin(List<Pawn> pawnList){
         return true;
     }
 }
