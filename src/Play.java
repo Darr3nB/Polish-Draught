@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Play {
     public static void playGame(){
@@ -18,7 +19,7 @@ public class Play {
                 // TODO AvP
                 break;
             case 4:
-                // TODO AVA
+                // TODO AvA
                 break;
             default:
                 System.out.println("Good bye!");
@@ -29,6 +30,27 @@ public class Play {
     private static void playerVsPlayer(){
         int boardSize = Menu.boardSize();
         Board playerVsPlayerBoard = new Board(boardSize);
-        System.out.println(playerVsPlayerBoard.toString());
+        int playerTurn = 1;
+        Scanner sc = new Scanner(System.in);
+
+        while (true) {
+            try {
+
+                System.out.println(playerVsPlayerBoard.toString());
+
+                System.out.printf("Player %d turn. Enter an X coordinate: %n", playerTurn);
+                char playerXCordInput = Character.toUpperCase(sc.next().charAt(0));
+
+                System.out.print("Enter an Y coordinate: ");
+                int playerYCordInput = sc.nextInt();
+
+                System.out.printf("%c.%d%n", playerXCordInput, playerYCordInput);
+
+
+                break;
+            }catch (Exception e){
+                System.out.println("Error");
+            }
+        }
     }
 }

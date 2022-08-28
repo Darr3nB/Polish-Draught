@@ -40,7 +40,6 @@ public class Menu {
     }
 
     public static int boardSize(){
-        // TODO check if input is int and between range
         Scanner sc = new Scanner(System.in);
         int boardSize;
 
