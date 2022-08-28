@@ -44,13 +44,22 @@ public class Play {
                 System.out.print("Enter an Y coordinate: ");
                 int playerYCordInput = sc.nextInt();
 
-                System.out.printf("%c.%d%n", playerXCordInput, playerYCordInput);
-
+                if(!checkPlayerCoordinateInput(playerXCordInput, playerYCordInput, boardSize)){
+                    System.out.println("Invalid input!");
+                    continue;
+                }
 
                 break;
             }catch (Exception e){
                 System.out.println("Error");
             }
         }
+    }
+
+    private static boolean checkPlayerCoordinateInput(char xCoord, int yCoord, int boardSize){
+        if(xCoord > 'A' && xCoord < 'Z') return false;
+        if (yCoord < 10 || yCoord > boardSize) return false;
+
+        return true;
     }
 }
