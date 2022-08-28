@@ -38,16 +38,10 @@ public class Play {
 
                 System.out.println(playerVsPlayerBoard.toString());
 
-                System.out.printf("Player %d turn. Enter an X coordinate: %n", playerTurn);
-                char playerXCordInput = Character.toUpperCase(sc.next().charAt(0));
+                if (!checkSelectPawn(playerTurn, boardSize)) continue;
 
-                System.out.print("Enter an Y coordinate: ");
-                int playerYCordInput = sc.nextInt();
+                if (!checkPawnStep(boardSize)) continue;
 
-                if(!checkPlayerCoordinateInput(playerXCordInput, playerYCordInput, boardSize)){
-                    System.out.println("Invalid input!");
-                    continue;
-                }
 
                 break;
             }catch (Exception e){
@@ -59,6 +53,40 @@ public class Play {
     private static boolean checkPlayerCoordinateInput(char xCoord, int yCoord, int boardSize){
         if(xCoord > 'A' && xCoord < 'Z') return false;
         if (yCoord < 1 || yCoord > boardSize) return false;
+
+        return true;
+    }
+
+    private static boolean checkSelectPawn(int playerTurn, int boardSize){
+        Scanner sc = new Scanner(System.in);
+
+        System.out.printf("Player %d turn. Enter an X coordinate to select a pawn: %n", playerTurn);
+        char startXCordInput = Character.toUpperCase(sc.next().charAt(0));
+
+        System.out.print("Enter an Y coordinate to select a pawn: ");
+        int startYCordInput = sc.nextInt();
+
+        if(!checkPlayerCoordinateInput(startXCordInput, startYCordInput, boardSize)){
+            System.out.println("Invalid input!");
+            return false;
+        }
+
+        return true;
+    }
+
+    private static boolean checkPawnStep(int boardSize){
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter an X coordinate to step on: ");
+        char endXCordInput = Character.toUpperCase(sc.next().charAt(0));
+
+        System.out.println("Enter an Y coordinate to step on:");
+        int endYCoordinateInput = sc.nextInt();
+
+        if (!checkPlayerCoordinateInput(endXCordInput, endYCoordinateInput, boardSize)){
+            System.out.println("Invalid input!");
+            return false;
+        }
 
         return true;
     }
