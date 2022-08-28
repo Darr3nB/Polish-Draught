@@ -47,8 +47,8 @@ public class Board {
     public void movePawn(int starRow, int startCol, int endRow, int endCol, List<Pawn> pawnList){
         // TODO check after move can it be crowned
         for (Pawn pawn : pawnList) {
-            if (pawn.x == starRow && pawn.y == startCol){
-                pawn.x = endRow;
+            if (pawn.x == starRow -64 && pawn.y == startCol){
+                pawn.x = endRow - 64;
                 pawn.y = endCol;
                 placeOrReplacePawnsOnBoard(pawnList);
                 return;

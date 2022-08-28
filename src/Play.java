@@ -14,12 +14,15 @@ public class Play {
                 break;
             case 2:
                 // TODO PvA
+                System.out.println("Not implemented yet!");
                 break;
             case 3:
                 // TODO AvP
+                System.out.println("Not implemented yet!");
                 break;
             case 4:
                 // TODO AvA
+                System.out.println("Not implemented yet!");
                 break;
             default:
                 System.out.println("Good bye!");
@@ -52,7 +55,7 @@ public class Play {
                 System.out.print("Enter an X coordinate to step on: ");
                 char endXCordInput = Character.toUpperCase(sc.next().charAt(0));
 
-                System.out.println("Enter an Y coordinate to step on:");
+                System.out.print("Enter an Y coordinate to step on: ");
                 int endYCoordinateInput = sc.nextInt();
 
                 if (!checkPlayerCoordinateInput(endXCordInput, endYCoordinateInput, boardSize)){
@@ -72,18 +75,19 @@ public class Play {
 
         if(!Menu.epilogue(playerTurn)){
             System.out.println("Good bye!");
+        }else {
+            playGame();
         }
-        playGame();
     }
 
     private static boolean checkPlayerCoordinateInput(char xCoord, int yCoord, int boardSize){
-        if(xCoord > 'A' && xCoord < 'Z') return false;
+        if (!Character.isLetter(xCoord)) return false;
         if (yCoord < 1 || yCoord > boardSize) return false;
 
         return true;
     }
 
     private static boolean checkForWin(List<Pawn> pawnList){
-        return true;
+        return false;
     }
 }
