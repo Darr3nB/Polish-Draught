@@ -1,6 +1,8 @@
+package domain;
+
 import java.util.List;
 
-public class Board {
+public class Board { // package: domain
     public Pawn[][] gameBoard;
 
     public Board(int size){
@@ -17,15 +19,15 @@ public class Board {
 
         for (int i = 0; i < gameBoard.length; i++){
             boardToPrint.append(' ')
-                .append(headerLetter)
-                .append(' ');
+                    .append(headerLetter)
+                    .append(' ');
             headerLetter++;
         }
         boardToPrint.append(System.lineSeparator());
 
         for(Pawn[] line : gameBoard){
             boardToPrint.append(rowMarker)
-                .append("\t");
+                    .append("\t");
             rowMarker++;
 
             for (Pawn pawn : line){

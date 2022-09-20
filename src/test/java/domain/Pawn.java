@@ -1,4 +1,6 @@
-public class Pawn {
+package domain;
+
+public class Pawn { //package: domain
     private char color;
     public int player;
     private boolean isCrowned = false;

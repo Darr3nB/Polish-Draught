@@ -1,38 +1,28 @@
+package game;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class Play {
-    public static void playGame(){
+    public static void game(){
         // TODO close scanner at the end
-        List<Pawn> pawnList = new ArrayList<Pawn>();
+        List<domain.Pawn> pawnList = new ArrayList<domain.Pawn>();
 
-        int gameType = Menu.welcomeMenu();
-        switch (gameType){
-            case 1:
-                playerVsPlayer(pawnList);
-                break;
-            case 2:
-                // TODO PvA
-                System.out.println("Not implemented yet!");
-                break;
-            case 3:
-                // TODO AvP
-                System.out.println("Not implemented yet!");
-                break;
-            case 4:
-                // TODO AvA
-                System.out.println("Not implemented yet!");
-                break;
-            default:
-                System.out.println("Good bye!");
-                break;
+        int gameType = Menu.welcomeMenuAndSelectOne();
+
+        int playerTurn = Menu.gameTypeSelectedMenu(gameType, pawnList);
+
+        if(!Menu.epilogue(playerTurn)){
+            System.out.println("Good bye!");
+        }else {
+            game();
         }
     }
 
-    private static void playerVsPlayer(List<Pawn> pawnList){
+    public static int playerVsPlayer(List<domain.Pawn> pawnList){
         int boardSize = Menu.boardSize();
-        Board playerVsPlayerBoard = new Board(boardSize);
+        domain.Board playerVsPlayerBoard = new domain.Board(boardSize);
         int playerTurn = 1;
         Scanner sc = new Scanner(System.in);
 
@@ -67,27 +57,23 @@ public class Play {
 
                 if (checkForWin(pawnList)) break;
 
-                playerTurn = playerTurn == 1 ? 2 : 1;
+                playerTurn = playerTurn != 2 ? 2 : 1;
             }catch (Exception e){
-                System.out.println("Error");
+                System.out.println("Error" + e);
             }
         }
 
-        if(!Menu.epilogue(playerTurn)){
-            System.out.println("Good bye!");
-        }else {
-            playGame();
-        }
+        return playerTurn;
     }
 
     private static boolean checkPlayerCoordinateInput(char xCoord, int yCoord, int boardSize){
-        if (!Character.isLetter(xCoord)) return false;
-        if (yCoord < 1 || yCoord > boardSize) return false;
+        if (!Character.isLetter(xCoord)) { return false; }
+        if (yCoord < 1 || yCoord > boardSize) { return false; }
 
         return true;
     }
 
-    private static boolean checkForWin(List<Pawn> pawnList){
+    private static boolean checkForWin(List<domain.Pawn> pawnList){
         return false;
     }
 }

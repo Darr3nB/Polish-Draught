@@ -1,19 +1,24 @@
+package game;
+
+import domain.Pawn;
+
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
 public class Menu {
 
-    public static int welcomeMenu(){
+    public static int welcomeMenuAndSelectOne() {
         StringBuilder menuPoints = new StringBuilder();
         int menuSelected;
         System.out.println("Welcome to Polish Draught!\n");
         Scanner sc = new Scanner(System.in);
 
         menuPoints.append("1. Player vs. Player\n")
-            .append("2. Player vs. A.i.\n")
-            .append("3. A.i. vs. Player\n")
-            .append("4. A.i. vs. A.i.\n")
-            .append("0. Quit game\n");
+                .append("2. Player vs. A.i.\n")
+                .append("3. A.i. vs. Player\n")
+                .append("4. A.i. vs. A.i.\n")
+                .append("0. Quit game\n");
 
         while (true) {
             try {
@@ -21,18 +26,18 @@ public class Menu {
                 System.out.print("Select a menu point: ");
                 int input = sc.nextInt();
 
-                if (input < 0 || input > 4){
+                if (input < 0 || input > 4) {
                     System.out.println("Invalid menu point!\n");
                     continue;
                 }
                 menuSelected = input;
 
                 return menuSelected;
-            }catch (InputMismatchException e){
+            } catch (InputMismatchException e) {
                 System.out.println("Invalid input!");
                 sc.next();
                 System.out.println(System.lineSeparator());
-            }catch (Exception e){
+            } catch (Exception e) {
                 System.out.println("An error has occurred: " + e);
                 sc.next();
                 System.out.println(System.lineSeparator());
@@ -42,27 +47,27 @@ public class Menu {
         }
     }
 
-    public static int boardSize(){
+    public static int boardSize() {
         Scanner sc = new Scanner(System.in);
         int boardSize;
 
-        while (true){
+        while (true) {
             try {
                 System.out.print("Enter a field size (10-20): ");
                 int input = sc.nextInt();
 
-                if (input < 10 || input > 20){
+                if (input < 10 || input > 20) {
                     System.out.println("Invalid board size!");
                     continue;
                 }
                 boardSize = input;
 
                 return boardSize;
-            }catch (InputMismatchException e){
+            } catch (InputMismatchException e) {
                 System.out.println("Invalid input!");
                 sc.next();
                 System.out.println(System.lineSeparator());
-            }catch (Exception e){
+            } catch (Exception e) {
                 System.out.println("An error has occurred: " + e);
                 sc.next();
                 System.out.println(System.lineSeparator());
@@ -72,7 +77,7 @@ public class Menu {
         //sc.close();
     }
 
-    public static boolean epilogue(int player){
+    public static boolean epilogue(int player) {
         Scanner sc = new Scanner(System.in);
         System.out.printf("Congratulation! Player %d has won the game!%n", player);
 
@@ -81,17 +86,17 @@ public class Menu {
                 System.out.println("Do you want to play again? 1: yes 2: no");
                 int input = sc.nextInt();
 
-                if (input < 1 || input > 2){
+                if (input < 1 || input > 2) {
                     System.out.println("Invalid input");
                     continue;
                 }
 
                 return input == 1;
-            }catch (InputMismatchException e){
+            } catch (InputMismatchException e) {
                 System.out.println("Invalid input!");
                 sc.next();
                 System.out.println(System.lineSeparator());
-            }catch (Exception e){
+            } catch (Exception e) {
                 System.out.println("An error has occurred: " + e);
                 sc.next();
                 System.out.println(System.lineSeparator());
@@ -99,5 +104,28 @@ public class Menu {
         }
 
         //sc.close();
+    }
+
+    public static int gameTypeSelectedMenu(int gameType, List<Pawn> pawnList) {
+        switch (gameType) {
+            case 1:
+                return Play.playerVsPlayer(pawnList);
+            case 2:
+                // TODO PvA
+                System.out.println("Not implemented yet!");  // logger sout helyett
+                break;
+            case 3:
+                // TODO AvP
+                System.out.println("Not implemented yet!");
+                break;
+            case 4:
+                // TODO AvA
+                System.out.println("Not implemented yet!");
+                break;
+            default:
+                System.out.println("Good bye!");
+                break;
+        }
+        return 1; // TODO finish the method
     }
 }
